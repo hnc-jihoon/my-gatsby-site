@@ -1,0 +1,29 @@
+name: github pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      # ref) https://github.com/marketplace/actions/github-action-for-yarn
+      - name: Setup Yarn
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install      # will run `yarn install` command
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
