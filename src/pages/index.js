@@ -81,6 +81,13 @@ const badgeStyle = {
 // data
 const links = [
   {
+    text: "First post (for test)",
+    url: "/blog/my-first-post",
+    description:
+      "a simple post for test",
+    color: "#1adb37",
+  },
+  {
     text: "Tutorial",
     url: "https://www.gatsbyjs.com/docs/tutorial/",
     description:
