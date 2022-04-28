@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Button from '@mui/material/Button';
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -16,6 +17,13 @@ export default function Template({
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>
+      
+      <Button 
+        variant="contained"
+        onClick={() => window.location.href = "https://mui.com"}
+      >
+        Hello MUI
+      </Button>
     </div>
   )
 }
