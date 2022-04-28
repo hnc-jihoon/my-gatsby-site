@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 // styles
 const pageStyles = {
@@ -81,6 +82,7 @@ const badgeStyle = {
 // data
 const links = [
   {
+    inApp: true,
     text: "First post (for test)",
     url: "/blog/my-first-post",
     description:
@@ -164,12 +166,21 @@ const IndexPage = () => {
         {links.map(link => (
           <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
             <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
+              {
+                link.inApp ? 
+                <Link 
+                  style={linkStyle}
+                  to={link.url}
+                >
+                  {link.text}
+                </Link> : 
+                <a
+                  style={linkStyle}
+                  href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+                >
+                  {link.text}
+                </a>
+              }
               {link.badge && (
                 <span style={badgeStyle} aria-label="New Badge">
                   NEW!
